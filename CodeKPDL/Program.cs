@@ -181,7 +181,7 @@ namespace CodeKPDL
             vy.Clear();
             foreach (var item in y)
                 vy.Add((item - meanY) / sdY);
-            Console.WriteLine($"\nX Chuan hoa z-sc:");
+            Console.WriteLine($"\nY Chuan hoa z-sc:");
             for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
 
 
@@ -189,7 +189,7 @@ namespace CodeKPDL
             float sdXa = x.Sum(x => Math.Abs(x - meanX)) / n;
             foreach (var item in y)
                 vx.Add((item - meanX) / sdXa);
-            Console.WriteLine($"\nX Chuan hoa z-sc:");
+            Console.WriteLine($"\nX Chuan hoa z-sc Lech chuan tuyet doi:");
             for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
 
 
@@ -197,7 +197,7 @@ namespace CodeKPDL
             float sdYa = y.Sum(y => Math.Abs(y - meanY)) / n;
             foreach (var item in y)
                 vy.Add((item - meanY) / sdYa);
-            Console.WriteLine($"\nX Chuan hoa z-sc:");
+            Console.WriteLine($"\nY Chuan hoa z-sc Lech chuan tuyet doi:");
             for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
         }
 
