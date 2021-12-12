@@ -141,8 +141,8 @@ namespace CodeKPDL
             }
             else
             {
-                medianX = (xs[n / 2]);
-                medianY = (ys[n / 2]);
+                medianX = (xs[n+1 / 2]);
+                medianY = (ys[n+1 / 2]);
             }
 
             Console.WriteLine($"median X: {medianX}");
