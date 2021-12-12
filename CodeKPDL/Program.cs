@@ -186,7 +186,7 @@ namespace CodeKPDL
 
 
             vx.Clear();
-            float sdXa = xs.Sum(x => Math.Abs(x - meanX)) / n;
+            float sdXa = xs.Sum(xs => Math.Abs(xs - meanX)) / n;
             foreach (var item in xs)
                 vx.Add((item - meanX) / sdXa);
             Console.WriteLine($"\nX Chuan hoa z-sc Lech chuan tuyet doi:");
@@ -194,7 +194,7 @@ namespace CodeKPDL
 
 
             vy.Clear();
-            float sdYa = ys.Sum(y => Math.Abs(y - meanY)) / n;
+            float sdYa = ys.Sum(ys => Math.Abs(ys - meanY)) / n;
             foreach (var item in ys)
                 vy.Add((item - meanY) / sdYa);
             Console.WriteLine($"\nY Chuan hoa z-sc Lech chuan tuyet doi:");
