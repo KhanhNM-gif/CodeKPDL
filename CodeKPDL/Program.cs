@@ -157,48 +157,48 @@ namespace CodeKPDL
             vx = new List<float>();
             vy = new List<float>();
 
-            float minx = x.Min();
-            float maxx = x.Max();
-            foreach (var item in x)
+            float minx = xs.Min();
+            float maxx = xs.Max();
+            foreach (var item in xs)
                 vx.Add(((item - minx) / (maxx - minx)) * (max - min) + min);
             Console.WriteLine($"\nX Chuan hoa min - max:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{xs[i]}]={Math.Round(vx[i], 2)} \n"); }
 
-            float miny = y.Min();
-            float maxy = y.Max();
-            foreach (var item in y)
+            float miny = ys.Min();
+            float maxy = ys.Max();
+            foreach (var item in ys)
                 vy.Add(((item - miny) / (maxy - miny)) * (max - min) + min);
             Console.WriteLine($"\nY Chuan hoa min - max:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{ys[i]}]={Math.Round(vy[i], 2)} \n"); }
 
             vx.Clear();
-            foreach (var item in y)
+            foreach (var item in xs)
                 vx.Add((item - meanX) / sdX);
             Console.WriteLine($"\nX Chuan hoa z-sc:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{xs[i]}]={Math.Round(vx[i], 2)} \n"); }
 
 
             vy.Clear();
-            foreach (var item in y)
+            foreach (var item in ys)
                 vy.Add((item - meanY) / sdY);
             Console.WriteLine($"\nY Chuan hoa z-sc:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{ys[i]}]={Math.Round(vy[i], 2)} \n"); }
 
 
             vx.Clear();
-            float sdXa = x.Sum(x => Math.Abs(x - meanX)) / n;
-            foreach (var item in y)
+            float sdXa = xs.Sum(x => Math.Abs(x - meanX)) / n;
+            foreach (var item in xs)
                 vx.Add((item - meanX) / sdXa);
             Console.WriteLine($"\nX Chuan hoa z-sc Lech chuan tuyet doi:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{xs[i]}]={Math.Round(vx[i], 2)} \n"); }
 
 
             vy.Clear();
-            float sdYa = y.Sum(y => Math.Abs(y - meanY)) / n;
-            foreach (var item in y)
+            float sdYa = ys.Sum(y => Math.Abs(y - meanY)) / n;
+            foreach (var item in ys)
                 vy.Add((item - meanY) / sdYa);
             Console.WriteLine($"\nY Chuan hoa z-sc Lech chuan tuyet doi:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{ys[i]}]={Math.Round(vy[i], 2)} \n"); }
         }
 
         public void CalHeSoTuongQuan()
