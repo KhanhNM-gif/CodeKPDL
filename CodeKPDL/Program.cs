@@ -15,7 +15,7 @@ namespace CodeKPDL
             day.CalMean();
             day.CalMedian();
             day.CalSD();
-            day.CalV();
+            day.CalV(2,5);
             day.CalHeSoTuongQuan();
 
             Console.ReadKey();
