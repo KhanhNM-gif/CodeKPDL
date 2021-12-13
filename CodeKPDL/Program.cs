@@ -24,6 +24,8 @@ namespace CodeKPDL
 
     class Day
     {
+
+        public static int LAM_TRON = 2;
         List<float> x { get; set; }
         List<float> xs { get; set; }
         List<float> vx { get; set; }
@@ -32,7 +34,7 @@ namespace CodeKPDL
         float sdX
         {
             get { return sdXp; }
-            set { sdXp = (float)Math.Round(value, 2); }
+            set { sdXp = (float)Math.Round(value, LAM_TRON); }
         }
 
         List<float> y { get; set; }
@@ -43,14 +45,14 @@ namespace CodeKPDL
         float sdY
         {
             get { return sdYp; }
-            set { sdYp = (float)Math.Round(value, 2); }
+            set { sdYp = (float)Math.Round(value, LAM_TRON); }
         }
 
         float meanXp { get; set; }
         float meanX
         {
             get { return meanXp; }
-            set { meanXp = (float)Math.Round(value, 2); }
+            set { meanXp = (float)Math.Round(value, LAM_TRON); }
         }
         int n { get; set; }
 
@@ -58,28 +60,28 @@ namespace CodeKPDL
         float medianX
         {
             get { return medianXp; }
-            set { medianXp = (float)Math.Round(value, 2); }
+            set { medianXp = (float)Math.Round(value, LAM_TRON); }
         }
 
         float meanYp;
         float meanY
         {
             get { return meanYp; }
-            set { meanYp = (float)Math.Round(value, 2); }
+            set { meanYp = (float)Math.Round(value, LAM_TRON); }
         }
 
         float medianYp;
         float medianY
         {
             get { return medianYp; }
-            set { medianYp = (float)Math.Round(value, 2); }
+            set { medianYp = (float)Math.Round(value, LAM_TRON); }
         }
 
         float HeSoTuongQuanp;
         float HeSoTuongQuan
         {
             get { return HeSoTuongQuanp; }
-            set { HeSoTuongQuanp = (float)Math.Round(value, 2); }
+            set { HeSoTuongQuanp = (float)Math.Round(value, LAM_TRON); }
         }
         public Day(string filepath)
         {
@@ -104,6 +106,10 @@ namespace CodeKPDL
                         y = new List<float>();
                         for (int i = 0; i < str.Count(); i++)
                             y.Add(float.Parse(str[i]));
+                    }
+                    if(line == 3)
+                    {
+                        LAM_TRON = int.Parse(str[0]);
                     }
                     line++;
                 }
@@ -135,8 +141,8 @@ namespace CodeKPDL
             }
             else
             {
-                medianX = (xs[n / 2 - 1] + xs[n / 2 + 1]) / 2;
-                medianY = (ys[n / 2 - 1] + ys[n / 2 + 1]) / 2;
+                medianX = (xs[n+1 / 2]);
+                medianY = (ys[n+1 / 2]);
             }
 
             Console.WriteLine($"median X: {medianX}");
@@ -162,27 +168,27 @@ namespace CodeKPDL
             foreach (var item in x)
                 vx.Add(((item - minx) / (maxx - minx)) * (max - min) + min);
             Console.WriteLine($"\nX Chuan hoa min - max:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{x[i]}]={Math.Round(vx[i], LAM_TRON)} \n"); }
 
             float miny = y.Min();
             float maxy = y.Max();
             foreach (var item in y)
                 vy.Add(((item - miny) / (maxy - miny)) * (max - min) + min);
             Console.WriteLine($"\nY Chuan hoa min - max:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{y[i]}]={Math.Round(vy[i], LAM_TRON)} \n"); }
 
             vx.Clear();
-            foreach (var item in y)
+            foreach (var item in x)
                 vx.Add((item - meanX) / sdX);
             Console.WriteLine($"\nX Chuan hoa z-sc:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{x[i]}]={Math.Round(vx[i], LAM_TRON)} \n"); }
 
 
             vy.Clear();
             foreach (var item in y)
                 vy.Add((item - meanY) / sdY);
             Console.WriteLine($"\nY Chuan hoa z-sc:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{y[i]}]={Math.Round(vy[i], LAM_TRON)} \n"); }
 
 
             vx.Clear();
@@ -190,7 +196,7 @@ namespace CodeKPDL
             foreach (var item in y)
                 vx.Add((item - meanX) / sdXa);
             Console.WriteLine($"\nX Chuan hoa z-sc Lech chuan tuyet doi:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vx[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{x[i]}]={Math.Round(vx[i], LAM_TRON)} \n"); }
 
 
             vy.Clear();
@@ -198,7 +204,7 @@ namespace CodeKPDL
             foreach (var item in y)
                 vy.Add((item - meanY) / sdYa);
             Console.WriteLine($"\nY Chuan hoa z-sc Lech chuan tuyet doi:");
-            for (int i = 0; i < n; i++) { Console.Write($"v'[{i + 1}]={Math.Round(vy[i], 2)} \n"); }
+            for (int i = 0; i < n; i++) { Console.Write($"v'[{y[i]}]={Math.Round(vy[i], LAM_TRON)} \n"); }
         }
 
         public void CalHeSoTuongQuan()
